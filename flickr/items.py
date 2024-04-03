@@ -3,14 +3,18 @@ import scrapy
 
 from pprint import pformat
 
-
-class FlickrItem(scrapy.Item):
+class FlickrPhotoset(scrapy.Item):
+    url = scrapy.Field()
     title = scrapy.Field()
-    image_url = scrapy.Field()
-    image_body = scrapy.Field()
+    description = scrapy.Field()
+    photos = scrapy.Field()
+    
 
-    def __str__(self):
-        return pformat({
-            'image_url': self['image_url'],
-            'image_body': self['image_body'][:10] + '...',
-        })
+class FlickrImage(scrapy.Item):
+    title = scrapy.Field()
+    url = scrapy.Field()
+    content = scrapy.Field()
+    date = scrapy.Field()
+    tags = scrapy.Field()
+    description = scrapy.Field()
+    photopage = scrapy.Field()
